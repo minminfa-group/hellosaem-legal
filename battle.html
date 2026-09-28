@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>헬로쌤 배틀 초대</title>
+<!--
+  카카오톡 배틀 신청 카드에서 앱이 없는 사람이 여는 설치 안내 페이지(2026-09-28).
+  - 카드 링크의 webUrl/mobileWebUrl(PC 카카오톡 등)과 카카오 콘솔의 Android 마켓 URL 이 이 주소다.
+  - 카카오톡은 앱 미설치 시 초대 정보(티켓)를 넘겨 주지 않는다 → 설치·로그인 후
+    카카오톡으로 돌아가 카드의 [수락]을 다시 누르게 안내한다(초대는 24시간 유효).
+  - 게시: minminfa-group/hellosaem-legal 저장소에 battle.html 로 올린다.
+-->
+<style>
+:root{--green:#1f7a4d;--green-dark:#16603c;--bg:#f7f8f6;--text:#1f2a24;--sub:#6b746f;--card:#fff;--line:#e3e8e4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.6}
+main{max-width:480px;margin:0 auto;padding:28px 16px 48px;text-align:center}
+.logo{width:200px;height:200px;border-radius:24px;display:block;margin:0 auto 18px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+h1{font-size:22px;margin:0 0 8px;line-height:1.4}
+.lead{margin:0 0 22px;color:var(--sub);font-size:15px}
+.btn{display:block;width:100%;padding:16px;border-radius:14px;background:var(--green);color:#fff;font-size:17px;font-weight:700;text-decoration:none;margin:10px 0}
+.btn:active{background:var(--green-dark)}
+.btn.secondary{background:var(--card);color:var(--green);border:1.5px solid var(--green)}
+.hidden{display:none}
+.steps{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 12px;margin:22px 0 0;text-align:left}
+.steps h2{font-size:15px;margin:0 0 10px}
+.steps ol{margin:0;padding-left:22px}
+.steps li{margin:6px 0;font-size:14.5px}
+.note{font-size:13px;color:var(--sub);margin-top:18px}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="https://rqnbztxaoapmmxowltgp.supabase.co/storage/v1/object/public/public-assets/battle_logo.png" alt="헬로쌤 배틀 도전장">
+  <h1>친구가 헬로쌤 단어 배틀을<br>신청했어요!</h1>
+  <p class="lead">배틀을 받으려면 헬로쌤 앱이 필요해요.<br>지금 설치하시겠어요?</p>
+
+  <a id="android" class="btn hidden" href="https://play.google.com/store/apps/details?id=com.hellosaem.hellosaem_app">헬로쌤 설치하기</a>
+  <a id="ios" class="btn hidden" href="https://apps.apple.com/kr/app/id6814555125">헬로쌤 설치하기</a>
+  <div id="pc" class="hidden">
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.hellosaem.hellosaem_app">Google Play에서 받기</a>
+    <a class="btn secondary" href="https://apps.apple.com/kr/app/id6814555125">App Store에서 받기</a>
+  </div>
+
+  <div class="steps">
+    <h2>설치한 다음에는</h2>
+    <ol>
+      <li>헬로쌤을 열고 <strong>회원가입 또는 로그인</strong>을 해요.</li>
+      <li><strong>카카오톡으로 돌아와</strong> 배틀 신청 메시지의 <strong>[수락]</strong>을 다시 눌러요.</li>
+      <li>바로 대전이 시작돼요!</li>
+    </ol>
+  </div>
+  <p class="note">배틀 신청은 보낸 뒤 24시간 동안 받을 수 있어요.<br>이미 헬로쌤이 있다면 휴대폰 카카오톡에서 [수락]을 눌러 주세요.</p>
+</main>
+<script>
+  (function () {
+    var ua = navigator.userAgent || "";
+    var id = /android/i.test(ua) ? "android"
+           : /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && "ontouchend" in document) ? "ios"
+           : "pc";
+    document.getElementById(id).classList.remove("hidden");
+  })();
+</script>
+</body>
+</html>
