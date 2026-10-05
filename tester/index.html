@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>헬로쌤 테스터 모집</title>
+<meta name="description" content="찍으면 외워지는 단어장 '헬로쌤' 구글플레이 비공개 테스트 테스터를 모집합니다.">
+<meta name="theme-color" content="#0C8258">
+<meta property="og:type" content="website">
+<meta property="og:title" content="헬로쌤 비공개테스트 테스터 모집">
+<meta property="og:description" content="안드로이드 폰(삼성갤럭시) 사용자라면 정식 출시 전에 먼저 써 보세요.">
+<meta property="og:image" content="assets/promo_poster.jpg">
+<link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #DCE6E1; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16211D; }
+  h1, h2, p { margin: 0; }
+  input, button { font-family: inherit; }
+  button { border: 0; padding: 0; background: none; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  [hidden] { display: none !important; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  .frame { min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; }
+  .page { width: 100%; max-width: 440px; background: #F5F8F6; min-height: 100vh; min-height: 100dvh; position: relative; overflow-x: hidden; }
+
+  /* ── 01 소개 ── */
+  .hero { background: #0C8258; color: #fff; padding: calc(22px + env(safe-area-inset-top)) 22px 30px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -70px; top: -70px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.07); }
+  .hero > * { position: relative; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand img { width: 30px; height: 30px; border-radius: 9px; display: block; }
+  .brand b { font-size: 15px; font-weight: 800; }
+  .badge { margin-left: auto; flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 800; white-space: nowrap; }
+  .badge i { width: 7px; height: 7px; border-radius: 50%; background: #FFD268; flex-shrink: 0; }
+  .play { display: inline-flex; align-items: center; gap: 7px; background: #fff; padding: 7px 12px; border-radius: 10px; margin-top: 30px; font-size: 12.5px; font-weight: 800; color: #16211D; white-space: nowrap; }
+  .play svg { flex-shrink: 0; }
+  .hero h1 { font-size: 32px; line-height: 1.28; font-weight: 800; letter-spacing: -1px; margin-top: 16px; text-wrap: pretty; }
+  .hero h1 span { color: #FFD268; }
+  .target { margin-top: 24px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.24); border-radius: 16px; padding: 15px 16px; display: flex; align-items: center; gap: 13px; }
+  .target .ico { width: 42px; height: 42px; border-radius: 13px; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .target small { display: block; font-size: 12px; font-weight: 700; opacity: .85; }
+  .target strong { display: block; font-size: 15.5px; font-weight: 800; margin-top: 3px; }
+
+  .cta { width: 100%; border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 17px; font-weight: 800; white-space: nowrap; }
+  .cta-yellow { margin-top: 14px; background: #FFD268; color: #3A2A0A; box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
+  .cta-green { margin-top: 14px; background: #0B8F5F; color: #fff; box-shadow: 0 10px 22px rgba(11,143,95,0.30); }
+  .cta:active { transform: translateY(1px); }
+
+  .about { padding: 30px 20px 0; }
+  .about-title { display: flex; align-items: center; gap: 9px; }
+  .about-title i { width: 9px; height: 9px; border-radius: 50%; border: 2.5px solid #0B8F5F; }
+  .about-title h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; }
+  .video { margin-top: 16px; border-radius: 20px; overflow: hidden; background: #0C1613; box-shadow: 0 12px 28px rgba(15,45,35,0.16); }
+  .video video { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; background: #0C1613; }
+  .lead { font-size: 15.5px; line-height: 1.72; color: #3E4A44; margin: 20px 2px 0; text-wrap: pretty; }
+  .lead b { color: #16211D; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .feature { background: #fff; border: 1px solid #EAEFEC; border-radius: 16px; padding: 15px; }
+  .feature .ico { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
+  .feature b { display: block; font-size: 14.5px; font-weight: 800; margin-top: 10px; }
+  .feature span { display: block; font-size: 12.5px; color: #6A7A73; font-weight: 600; margin-top: 3px; line-height: 1.5; }
+  .shots-head { display: flex; align-items: baseline; gap: 8px; margin: 30px 2px 12px; }
+  .shots-head b { font-size: 17px; font-weight: 800; }
+  .shots-head span { margin-left: auto; font-size: 12.5px; color: #8A968F; font-weight: 700; }
+  .shots { display: flex; gap: 12px; overflow-x: auto; padding: 0 20px 6px; scroll-snap-type: x mandatory; scroll-padding-left: 20px; -webkit-overflow-scrolling: touch; }
+  .shot { flex-shrink: 0; width: 168px; scroll-snap-align: start; margin: 0; }
+  .shot div { border-radius: 20px; overflow: hidden; border: 5px solid #16211D; background: #16211D; box-shadow: 0 10px 22px rgba(15,45,35,0.16); }
+  .shot img { width: 100%; aspect-ratio: 9 / 19; object-fit: cover; object-position: top; display: block; border-radius: 15px; }
+  .shot figcaption { font-size: 13px; font-weight: 700; color: #3E4A44; text-align: center; margin-top: 9px; }
+  .closing { padding: 28px 20px calc(36px + env(safe-area-inset-bottom)); }
+  .note { background: #E7F5EE; border: 1px solid #C6E7D8; border-radius: 18px; padding: 18px; }
+  .note b { display: block; font-size: 15px; font-weight: 800; }
+  .note span { display: block; font-size: 13.5px; color: #3E4A44; font-weight: 600; margin-top: 6px; line-height: 1.65; }
+
+  /* ── 02 신청 ── */
+  #form-screen { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+  .form-head { background: #0C8258; color: #fff; padding: calc(16px + env(safe-area-inset-top)) 18px 26px; }
+  .form-bar { display: flex; align-items: center; gap: 10px; }
+  .back { width: 40px; height: 40px; margin-left: -8px; display: flex; align-items: center; justify-content: center; }
+  .form-bar b { font-size: 17px; font-weight: 800; }
+  .form-bar span { margin-left: auto; font-size: 13px; font-weight: 800; opacity: .9; }
+  .steps { display: flex; gap: 6px; margin-top: 14px; }
+  .steps i { flex: 1; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.28); }
+  .steps i.on { background: #FFD268; }
+  .form-head h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-top: 20px; line-height: 1.35; }
+
+  .form-body { flex: 1; padding: 22px 20px calc(30px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 18px; }
+  .label { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; font-size: 14px; font-weight: 800; }
+  .label em { font-style: normal; font-size: 12px; font-weight: 700; color: #C9432C; }
+  .field { width: 100%; height: 54px; border: 1.5px solid #DCE4E0; border-radius: 14px; padding: 0 16px; font-size: 16px; background: #fff; color: #16211D; outline: none; }
+  .field:focus { border-color: #0B8F5F; }
+  .field.bad { border-color: #C9432C; }
+  .hint { display: flex; align-items: flex-start; gap: 7px; margin-top: 8px; font-size: 12.5px; color: #6A7A73; font-weight: 600; line-height: 1.55; }
+  .hint svg { flex-shrink: 0; margin-top: 2px; }
+  .hint.bad { color: #C9432C; }
+  .devices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .device { height: 50px; border-radius: 13px; border: 1.5px solid #DCE4E0; background: #fff; font-size: 14.5px; font-weight: 600; color: #3E4A44; }
+  .device[aria-checked="true"] { border-color: #0B8F5F; background: #E7F5EE; color: #0B8F5F; font-weight: 800; }
+  .agree { width: 100%; text-align: left; display: flex; align-items: flex-start; gap: 11px; background: #fff; border: 1px solid #EAEFEC; border-radius: 14px; padding: 15px; }
+  .agree i { width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid #C4CEC8; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .agree[aria-checked="true"] i { border-color: #0B8F5F; background: #0B8F5F; }
+  .agree span { flex: 1; min-width: 0; font-size: 13.5px; color: #3E4A44; font-weight: 600; line-height: 1.55; }
+  .spacer { flex: 1; }
+  .error { font-size: 13.5px; font-weight: 700; color: #C9432C; line-height: 1.55; text-align: center; }
+  .submit { width: 100%; border-radius: 16px; padding: 18px; text-align: center; font-size: 17px; font-weight: 800; background: #0B8F5F; color: #fff; box-shadow: 0 10px 22px rgba(11,143,95,0.30); }
+  .submit:disabled { background: #E3E9E6; color: #A9B5AF; box-shadow: none; cursor: default; }
+
+  .done { flex: 1; padding: 28px 20px calc(30px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
+  .done-top { text-align: center; }
+  .done-check { width: 72px; height: 72px; border-radius: 50%; background: #0B8F5F; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 22px rgba(11,143,95,0.28); }
+  .done-top b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-top: 18px; }
+  .done-top p { font-size: 14.5px; color: #54635C; font-weight: 600; margin-top: 8px; line-height: 1.6; overflow-wrap: anywhere; }
+  .preview { margin-top: 16px; background: #FFF4E6; border: 1px solid #F3D9B5; border-radius: 14px; padding: 13px 15px; font-size: 13px; font-weight: 700; color: #8A5A16; line-height: 1.55; text-align: center; }
+  .howto { background: #fff; border: 1px solid #EAEFEC; border-radius: 18px; padding: 18px; margin-top: 26px; }
+  .howto > b { font-size: 15px; font-weight: 800; }
+  .howto ol { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .howto li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #3E4A44; font-weight: 600; line-height: 1.55; }
+  .howto li i { width: 26px; height: 26px; border-radius: 50%; background: #E7F5EE; color: #0B8F5F; font-style: normal; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .howto li b { color: #16211D; }
+  .home { width: 100%; margin-top: 20px; background: #fff; border: 1.5px solid #C9D4DC; color: #16211D; border-radius: 16px; padding: 17px; text-align: center; font-size: 16px; font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="page">
+
+    <!-- 01 헬로쌤 소개 -->
+    <main id="intro-screen">
+      <header class="hero">
+        <div class="brand">
+          <img src="assets/app-icon.svg" alt="">
+          <b>헬로쌤</b>
+          <span class="badge"><i></i>비공개 테스트</span>
+        </div>
+
+        <div class="play">
+          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5l10.5 8.5L4 20.5z" fill="#0F9D58"/><path d="M4 3.5l13.2 6.1-2.7 2.4z" fill="#4285F4"/><path d="M4 20.5l13.2-6.1-2.7-2.4z" fill="#EA4335"/><path d="M17.2 9.6l3 1.4c.9.4.9 1.6 0 2l-3 1.4-2.7-2.4z" fill="#FBBC04"/></svg>
+          구글플레이
+        </div>
+        <h1>'헬로쌤'<br>비공개테스트<br><span>테스터 모집</span></h1>
+
+        <div class="target">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B8F5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>
+          </div>
+          <div>
+            <small>신청대상</small>
+            <strong>안드로이드 폰(삼성갤럭시) 사용자</strong>
+          </div>
+        </div>
+
+        <button type="button" class="cta cta-yellow" data-go="form">
+          헬로쌤 테스터 신청
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3A2A0A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </header>
+
+      <section class="about">
+        <div class="about-title"><i></i><h2>헬로쌤이란?</h2></div>
+
+        <div class="video">
+          <video src="assets/promo.mp4" poster="assets/promo_poster.jpg" controls playsinline preload="metadata"></video>
+        </div>
+
+        <p class="lead"><b>찍으면 외워지는 단어장</b>입니다. 교과서나 프린트를 찍으면 단어를 뽑아 단어장을 만들고, 망각곡선에 맞춰 복습 시점을 알려 줍니다. 카드암기, 퀴즈, 단어 게임, 친구 배틀까지 여러 방식으로 외울 수 있습니다.</p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="ico" style="background:#E7F5EE"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B8F5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2l1.2-2h6.6L15.5 7h2A1.5 1.5 0 0 1 19 8.5V17a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 3 17z"/><circle cx="11" cy="12" r="3.2"/></svg></div>
+            <b>찍으면 단어장</b><span>사진에서 단어 자동 추출</span>
+          </div>
+          <div class="feature">
+            <div class="ico" style="background:#EDF2FF"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4C6EF5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+            <b>복습 자동 편성</b><span>잊을 때쯤 다시 알림</span>
+          </div>
+          <div class="feature">
+            <div class="ico" style="background:#FFF4E6"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C9711F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="7.6" width="19.2" height="10.4" rx="5.2"/><path d="M7 11.2v3.2M5.4 12.8h3.2"/></svg></div>
+            <b>게임으로 암기</b><span>단어테트리스 · 워드퀘스트</span>
+          </div>
+          <div class="feature">
+            <div class="ico" style="background:#F3ECFF"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#7C5AE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M9 20h6M12 13v4"/></svg></div>
+            <b>30일 챌린지</b><span>하루 30분 목표 관리</span>
+          </div>
+        </div>
+
+        <div class="shots-head"><b>헬로쌤 화면</b><span>옆으로 넘겨 보세요</span></div>
+      </section>
+
+      <div class="shots">
+        <figure class="shot"><div><img src="assets/s1.jpg" alt="홈 · 오늘 학습" loading="lazy"></div><figcaption>홈 · 오늘 학습</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s2.jpg" alt="단어장" loading="lazy"></div><figcaption>단어장</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s3.jpg" alt="사전 · 바로 저장" loading="lazy"></div><figcaption>사전 · 바로 저장</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s8.jpg" alt="단어장 상세" loading="lazy"></div><figcaption>단어장 상세</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s4.jpg" alt="카드암기" loading="lazy"></div><figcaption>카드암기</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s5.jpg" alt="단어테트리스" loading="lazy"></div><figcaption>단어테트리스</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s6.jpg" alt="워드퀘스트" loading="lazy"></div><figcaption>워드퀘스트</figcaption></figure>
+        <figure class="shot"><div><img src="assets/s7.jpg" alt="30일 챌린지" loading="lazy"></div><figcaption>30일 챌린지</figcaption></figure>
+      </div>
+
+      <section class="closing">
+        <div class="note">
+          <b>먼저 써 보고, 의견을 들려주세요</b>
+          <span>정식 출시 전에 앱을 미리 사용하고 불편한 점을 알려 주시면 됩니다.</span>
+        </div>
+        <button type="button" class="cta cta-green" data-go="form">
+          헬로쌤 테스터 신청
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </section>
+    </main>
+
+    <!-- 02 테스터 신청 -->
+    <main id="form-screen" hidden>
+      <header class="form-head">
+        <div class="form-bar">
+          <button type="button" class="back" data-go="intro" aria-label="소개로 돌아가기">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <b>테스터 신청</b>
+          <span id="step-text">1 / 2</span>
+        </div>
+        <div class="steps"><i class="on"></i><i id="step-2"></i></div>
+        <h2>구글플레이 계정으로<br>테스트 초대를 보내 드려요</h2>
+      </header>
+
+      <form id="apply-form" class="form-body" novalidate>
+        <div>
+          <label class="label" for="name">이름</label>
+          <input id="name" class="field" name="name" placeholder="홍길동" autocomplete="name" maxlength="40">
+        </div>
+
+        <div>
+          <label class="label" for="email">구글플레이 이메일 <em>필수</em></label>
+          <input id="email" class="field" name="email" type="email" inputmode="email" placeholder="example@gmail.com" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" required>
+          <div class="hint" id="email-hint">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v.5M12 11.5v4.5"/></svg>
+            <span id="email-hint-text">휴대폰의 플레이스토어에 로그인된 구글 계정을 적어 주세요. 다른 계정이면 초대가 보이지 않습니다.</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="label" id="device-label">사용 중인 기기</div>
+          <div class="devices" role="radiogroup" aria-labelledby="device-label">
+            <button type="button" class="device" role="radio" aria-checked="true">S 시리즈</button>
+            <button type="button" class="device" role="radio" aria-checked="false">Z 폴드·플립</button>
+            <button type="button" class="device" role="radio" aria-checked="false">A 시리즈</button>
+            <button type="button" class="device" role="radio" aria-checked="false">기타 갤럭시</button>
+          </div>
+        </div>
+
+        <button type="button" class="agree" id="agree" role="checkbox" aria-checked="false">
+          <i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5 11-11"/></svg></i>
+          <span>테스트 초대 발송을 위해 이름과 이메일을 수집하는 데 동의합니다. 테스트 종료 후 파기됩니다.</span>
+        </button>
+
+        <div class="spacer"></div>
+        <div class="error" id="form-error" role="alert" hidden></div>
+        <button type="submit" class="submit" id="submit" disabled>신청 완료하기</button>
+      </form>
+
+      <section class="done" id="done" hidden>
+        <div class="done-top">
+          <div class="done-check">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5 11-11"/></svg>
+          </div>
+          <b id="done-title">신청이 접수됐어요</b>
+          <p><span id="done-mail"></span><br>으로 테스트 초대를 보내 드릴게요</p>
+        </div>
+        <div class="preview" id="preview-note" hidden>미리보기 모드입니다. 이 신청은 저장되지 않았습니다.</div>
+
+        <div class="howto">
+          <b>설치까지 3단계</b>
+          <ol>
+            <li><i>1</i><span>메일로 받은 <b>테스트 참여 링크</b>를 휴대폰에서 엽니다</span></li>
+            <li><i>2</i><span><b>테스터 되기</b>를 누릅니다</span></li>
+            <li><i>3</i><span>플레이스토어에서 <b>헬로쌤</b>을 설치합니다</span></li>
+          </ol>
+        </div>
+
+        <div class="spacer"></div>
+        <button type="button" class="home" data-go="intro">헬로쌤 소개로 돌아가기</button>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  var cfg = window.TESTER_CONFIG || {};
+  var configured = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
+  var $ = function (id) { return document.getElementById(id); };
+
+  var intro = $('intro-screen'), formScreen = $('form-screen');
+  var form = $('apply-form'), done = $('done');
+  var nameEl = $('name'), emailEl = $('email'), agreeEl = $('agree'), submitEl = $('submit');
+  var errorEl = $('form-error'), hintEl = $('email-hint'), hintText = $('email-hint-text');
+  var hintDefault = hintText.textContent;
+  var devices = Array.prototype.slice.call(document.querySelectorAll('.device'));
+  var sending = false;
+
+  // ── 화면 전환: 해시(#form)로 두어 휴대폰 뒤로가기가 소개 화면으로 돌아오게 한다.
+  function show() {
+    var isForm = location.hash === '#form';
+    intro.hidden = isForm;
+    formScreen.hidden = !isForm;
+    if (!isForm) resetDone();
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-go]');
+    if (!t) return;
+    if (t.dataset.go === 'form') location.hash = 'form';
+    else if (location.hash) history.pushState('', document.title, location.pathname + location.search), show();
+  });
+  window.addEventListener('hashchange', show);
+  window.addEventListener('popstate', show);
+
+  function setDone(isDone) {
+    form.hidden = isDone;
+    done.hidden = !isDone;
+    $('step-text').textContent = isDone ? '2 / 2' : '1 / 2';
+    $('step-2').classList.toggle('on', isDone);
+  }
+  function resetDone() { setDone(false); }
+
+  // ── 입력 검증
+  function emailOk() { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailEl.value.trim()); }
+  function agreed() { return agreeEl.getAttribute('aria-checked') === 'true'; }
+  function refresh() { submitEl.disabled = sending || !(emailOk() && agreed()); }
+  function emailHint(bad, text) {
+    emailEl.classList.toggle('bad', bad);
+    hintEl.classList.toggle('bad', bad);
+    hintText.textContent = text || hintDefault;
+  }
+  function fail(msg) { errorEl.textContent = msg; errorEl.hidden = !msg; }
+
+  emailEl.addEventListener('input', function () { emailHint(false); fail(''); refresh(); });
+  emailEl.addEventListener('blur', function () {
+    if (emailEl.value.trim() && !emailOk()) emailHint(true, '이메일 주소 형식을 확인해 주세요. 예) example@gmail.com');
+  });
+  agreeEl.addEventListener('click', function () {
+    agreeEl.setAttribute('aria-checked', String(!agreed()));
+    refresh();
+  });
+  devices.forEach(function (b) {
+    b.addEventListener('click', function () {
+      devices.forEach(function (o) { o.setAttribute('aria-checked', String(o === b)); });
+    });
+  });
+
+  // ── 제출: Supabase REST 로 한 행 저장. 설정이 없으면 미리보기(저장 안 함).
+  function save(row) {
+    if (!configured) return Promise.resolve('preview');
+    return fetch(cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/' + (cfg.table || 'tester_applications'), {
+      method: 'POST',
+      headers: {
+        apikey: cfg.supabaseAnonKey,
+        Authorization: 'Bearer ' + cfg.supabaseAnonKey,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify(row),
+    }).then(function (res) {
+      if (res.ok) return 'saved';
+      if (res.status === 409) return 'duplicate'; // 같은 이메일로 이미 신청함
+      throw new Error('HTTP ' + res.status);
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sending || !emailOk() || !agreed()) return;
+    var email = emailEl.value.trim().toLowerCase();
+    var device = devices.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0];
+    sending = true; refresh(); fail('');
+    submitEl.textContent = '보내는 중…';
+
+    save({ name: nameEl.value.trim() || null, email: email, device: device ? device.textContent : null })
+      .then(function (result) {
+        $('done-mail').textContent = email;
+        $('done-title').textContent = result === 'duplicate' ? '이미 신청하셨어요' : '신청이 접수됐어요';
+        $('preview-note').hidden = result !== 'preview';
+        setDone(true);
+        window.scrollTo(0, 0);
+      })
+      .catch(function () {
+        fail('신청을 보내지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.');
+      })
+      .then(function () {
+        sending = false;
+        submitEl.textContent = '신청 완료하기';
+        refresh();
+      });
+  });
+
+  show();
+  refresh();
+})();
+</script>
+</body>
+</html>
