@@ -95,9 +95,6 @@
   .hint { display: flex; align-items: flex-start; gap: 7px; margin-top: 8px; font-size: 12.5px; color: #6A7A73; font-weight: 600; line-height: 1.55; }
   .hint svg { flex-shrink: 0; margin-top: 2px; }
   .hint.bad { color: #C9432C; }
-  .devices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .device { height: 50px; border-radius: 13px; border: 1.5px solid #DCE4E0; background: #fff; font-size: 14.5px; font-weight: 600; color: #3E4A44; }
-  .device[aria-checked="true"] { border-color: #0B8F5F; background: #E7F5EE; color: #0B8F5F; font-weight: 800; }
   .agree { width: 100%; text-align: left; display: flex; align-items: flex-start; gap: 11px; background: #fff; border: 1px solid #EAEFEC; border-radius: 14px; padding: 15px; }
   .agree i { width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid #C4CEC8; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .agree[aria-checked="true"] i { border-color: #0B8F5F; background: #0B8F5F; }
@@ -227,11 +224,6 @@
 
       <form id="apply-form" class="form-body" novalidate>
         <div>
-          <label class="label" for="name">이름</label>
-          <input id="name" class="field" name="name" placeholder="홍길동" autocomplete="name" maxlength="40">
-        </div>
-
-        <div>
           <label class="label" for="email">구글플레이 이메일 <em>필수</em></label>
           <input id="email" class="field" name="email" type="email" inputmode="email" placeholder="example@gmail.com" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" required>
           <div class="hint" id="email-hint">
@@ -240,19 +232,9 @@
           </div>
         </div>
 
-        <div>
-          <div class="label" id="device-label">사용 중인 기기</div>
-          <div class="devices" role="radiogroup" aria-labelledby="device-label">
-            <button type="button" class="device" role="radio" aria-checked="true">S 시리즈</button>
-            <button type="button" class="device" role="radio" aria-checked="false">Z 폴드·플립</button>
-            <button type="button" class="device" role="radio" aria-checked="false">A 시리즈</button>
-            <button type="button" class="device" role="radio" aria-checked="false">기타 갤럭시</button>
-          </div>
-        </div>
-
         <button type="button" class="agree" id="agree" role="checkbox" aria-checked="false">
           <i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5 11-11"/></svg></i>
-          <span>테스트 초대 발송을 위해 이름과 이메일을 수집하는 데 동의합니다. 테스트 종료 후 파기됩니다.</span>
+          <span>테스트 초대 발송을 위해 이메일을 수집하는 데 동의합니다. 테스트 종료 후 파기됩니다.</span>
         </button>
 
         <div class="spacer"></div>
@@ -296,10 +278,9 @@
 
   var intro = $('intro-screen'), formScreen = $('form-screen');
   var form = $('apply-form'), done = $('done');
-  var nameEl = $('name'), emailEl = $('email'), agreeEl = $('agree'), submitEl = $('submit');
+  var emailEl = $('email'), agreeEl = $('agree'), submitEl = $('submit');
   var errorEl = $('form-error'), hintEl = $('email-hint'), hintText = $('email-hint-text');
   var hintDefault = hintText.textContent;
-  var devices = Array.prototype.slice.call(document.querySelectorAll('.device'));
   var sending = false;
 
   // ── 화면 전환: 해시(#form)로 두어 휴대폰 뒤로가기가 소개 화면으로 돌아오게 한다.
@@ -346,11 +327,6 @@
     agreeEl.setAttribute('aria-checked', String(!agreed()));
     refresh();
   });
-  devices.forEach(function (b) {
-    b.addEventListener('click', function () {
-      devices.forEach(function (o) { o.setAttribute('aria-checked', String(o === b)); });
-    });
-  });
 
   // ── 제출: Supabase REST 로 한 행 저장. 설정이 없으면 미리보기(저장 안 함).
   function save(row) {
@@ -375,11 +351,10 @@
     e.preventDefault();
     if (sending || !emailOk() || !agreed()) return;
     var email = emailEl.value.trim().toLowerCase();
-    var device = devices.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0];
     sending = true; refresh(); fail('');
     submitEl.textContent = '보내는 중…';
 
-    save({ name: nameEl.value.trim() || null, email: email, device: device ? device.textContent : null })
+    save({ email: email })
       .then(function (result) {
         $('done-mail').textContent = email;
         $('done-title').textContent = result === 'duplicate' ? '이미 신청하셨어요' : '신청이 접수됐어요';
